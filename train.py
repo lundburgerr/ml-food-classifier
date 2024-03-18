@@ -4,8 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from torch.utils.tensorboard import SummaryWriter
-from torch.utils.data import SubsetRandomSampler
-from torchvision import transforms, datasets
+from torchvision import transforms
 import torchvision
 
 from tqdm import tqdm
@@ -56,7 +55,6 @@ class CustomDataset(Dataset):
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])  # Normalize
         ])
         return transform
-
 
     def __len__(self):
         return sum(len(images) for images in self.data.values())
